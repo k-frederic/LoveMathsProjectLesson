@@ -1,42 +1,48 @@
- // Wait for the DOM to finish loading before running the game
- // Get the button elements and add event listeners to them
- 
- document.addEventListener("DOMContentLoaded", function() {
+// Wait for the DOM to finish loading before running the game
+// Get the button elements and add event listeners to them
+
+document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName('button');
-    for (let button of buttons){
-        button.addEventListener('click', function() {
-         if (this.getAttribute('data-type')=== 'submit') {
-            alert('You clicked Submit!');
-         } else {
-            let gameType = this.getAttribute('data-type');
-            alert(`you clicked ${gameType}`);
-         }
+    for (let button of buttons) {
+        button.addEventListener('click', function () {
+            if (this.getAttribute('data-type') === 'submit') {
+                alert('You clicked Submit!');
+            } else {
+                let gameType = this.getAttribute('data-type');
+                alert(`you clicked ${gameType}`);
+            }
         })
     }
- })
- function runGame() {
-    
- }
+})
 
-  function checkAnswer() {
-    
- }
+//** * The main game "loop", called when the script is first loaded and after the user's answer has been process */
 
-  function calculateCorrectAnswer() {
-    
- }
+function runGame() {
 
-  function incrementScore() {
-    
- }
+    // Creates two random numbers between 1 and 25
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
+}
 
-  function incrementWrongAnswer() {
-    
- }
+function checkAnswer() {
 
-  function displayAdditionQuestion() {
-    
- }
+}
+
+function calculateCorrectAnswer() {
+
+}
+
+function incrementScore() {
+
+}
+
+function incrementWrongAnswer() {
+
+}
+
+function displayAdditionQuestion() {
+
+}
 
 function displaySubstractQuestion() {
 
