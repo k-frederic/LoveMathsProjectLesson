@@ -3,6 +3,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName('button');
+
     for (let button of buttons) {
         button.addEventListener('click', function () {
             if (this.getAttribute('data-type') === 'submit') {
@@ -11,13 +12,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 let gameType = this.getAttribute('data-type');
                 runGame(gameType);
             }
-        })
+        });
     }
-    runGame('addition');
-})
 
-//*** The main game "loop", called when the script is first loaded and after the user's answer has been process */
+    document.getElementById("answer-box").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
+    runGame("addition");
+});
+
+/**
+ * The main game "loop", called when the script is first loaded
+ * and after the user's answer has been processed
+ */
 function runGame(gameType) {
+
+     document.getElementById('answer-box').value="";
+     document.getElementById('answer-box').focus();
 
     // Creates two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
@@ -25,16 +38,17 @@ function runGame(gameType) {
 
     if (gameType === 'addition') {
         displayAdditionQuestion(num1, num2);
-    } else if (gameType === 'multiply') {
+    }
+     else if (gameType === 'multiply') {
         displayMultiplyQuestion(num1, num2);
-    }  else if (gameType === 'substract') {
+    } 
+     else if (gameType === 'subtract') {
         displaySubstractQuestion(num1, num2);
     } 
-    else {
-        alert(`Unknown game type: ${gameType}`);
+    else
+     { alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`;
-
-    }
+     }
 }
 
 /**
@@ -56,6 +70,7 @@ function checkAnswer() {
    }
 
   runGame(calculatedAnswer[1]);
+    
 }
 
 /**
@@ -68,11 +83,13 @@ function calculateCorrectAnswer() {
     let operator = document.getElementById('operator').innerText;
 
     if (operator === "+") {
-        return[operand1 + operand2, 'addiction'];
-    } else if (operator === "x") {
+        return [operand1 + operand2, "addition"];
+    } 
+    else if (operator === "x") {
         return [operand1 * operand2, "multiply" ];
-    }  else if (operator === "-") {
-        return [operand1 - operand2, "substract"];
+    }  
+    else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
     }
     else {
         alert(`<Unimplemented operator ${operator}`);
